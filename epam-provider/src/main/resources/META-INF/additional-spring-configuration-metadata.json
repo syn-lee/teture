@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "epam.config.nacosServerAddr",
+      "type": "java.lang.String",
+      "description": "Description for epam.config.nacosServerAddr."
+    }
+  ]
+}

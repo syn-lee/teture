@@ -1,0 +1,32 @@
+server:
+  port: 18081
+  servlet:
+    context-path: /
+# 配置应用名
+spring:
+  application:
+    name: epam-consumer
+  # 配置服务注册中心地址
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${epam.config.nacosServerAddr}
+      config:
+        server-addr: ${epam.config.nacosServerAddr}
+        shared-configs[0]:
+          data-id: epam-provider
+  # i18n
+  messages:
+    basename: messages/message
+# 配置日志
+logging:
+  config: classpath:logback-spring.xml
+  file: logs/customer-epam.log
+  level:
+    root: error
+    com.epam: debug
+
+# 自定义配置类
+epam:
+  config:
+    nacosServerAddr: localhost:8848
