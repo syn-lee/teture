@@ -2,7 +2,7 @@
 
 #### 软件架构
 springboot + nacos 做服务注册发现中心以及配置中心，guava cache 做内存缓存， OncePerRequestFilter 做频次限级，
-支持国际化，通过地址栏添加参数 lang=locale 修改提示，统一返回值，同意错误信息
+支持国际化，通过地址栏添加参数 lang=locale 修改提示，统一返回值，统一错误信息
 
 #### 介绍介绍
 本项目采用微服务架构，天气提供者和使用者单独部署。
@@ -22,7 +22,7 @@ springboot + nacos 做服务注册发现中心以及配置中心，guava cache �
 <img width="342" alt="weather3" src="https://user-images.githubusercontent.com/6193594/141064482-e7e44f82-ebc1-4885-9a78-8a6ae1c3ea85.png">
 
 
-### nacos 中核心配置项
+### nacos 中核心配置项，默认 8848 端口
     weather.provinceUrl=http://www.weather.com.cn/data/city3jdata/china.html
     weather.cityUrl=http://www.weather.com.cn/data/city3jdata/provshi/{id}.html
     weather.countyUrl=http://www.weather.com.cn/data/city3jdata/station/{id}.html
