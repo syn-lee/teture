@@ -13,7 +13,7 @@ springboot + nacos 做服务注册发现中心以及配置中心，guava cache �
 3. 地点信息不常变动，服务启动时异步同步到内存缓存（可优化到 redis 中做持久化）
 4. 缓存温度等天气信息（半个小时，可配），服务降频 
 5. 测试方式：
-   1. 服务端url：localhost:18080/epam/weather/省/市/县
+   1. 服务端url：localhost:18080/epam/weather/cityId
    2. 客户端url 访问天气：localhost:18081/test/weather/省/市/县
    3. 客户端url 访问温度：localhost:18081/test/省/市/县
 6. snapshot
