@@ -35,11 +35,6 @@ public class AssertUtil {
 
     @SneakyThrows
     public static String msg(String code, Object... args) {
-        if (null == messageSource) {
-            while (null == messageSource) {
-                TimeUnit.MILLISECONDS.sleep(50);
-            }
-        }
         return messageSource.getMessage(code, args, LocaleContextHolder.getLocale());
     }
 }

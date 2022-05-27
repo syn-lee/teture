@@ -6,15 +6,14 @@ import com.epam.consumer.service.WeatherService;
 import com.epam.consumer.util.AssertUtil;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
+import java.util.Map;
+import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Service;
-
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @author Li Ming
@@ -59,20 +58,27 @@ public class WeatherServiceImpl implements WeatherService, InitializingBean {
         Area.County county = (Area.County) areaCache.getIfPresent(trim(countyName));
         AssertUtil.notNull(county, "county.not.valid", countyName);
         AssertUtil.isTrue(county.getCity().getName().contains(trim(cityName)), "city.not.valid", cityName);
-        AssertUtil.isTrue(county.getProvince().getName().contains(trim(provinceName)), "province.not.valid", provinceName);
+        AssertUtil.isTrue(county.getProvince().getName().contains(trim(provinceName)), "province.not.valid",
+            provinceName);
         // 拼装天气参数
         String code = county.getProvince().getCode() + county.getCity().getCode() + county.getCode();
+        return getWeatherInfo(code, countyName);
+    }
+    
+    @Override
+    public WeatherInfo getWeatherInfo(String code, String countyName) {
         return Optional.ofNullable(weatherCache.getIfPresent(code)).orElseGet(() -> {
             WeatherInfo weather = rws.weather(code);
             if (null != weather) {
-                weather = weather.getWeatherinfo();
                 weatherCache.put(code, weather);
-                weatherCache.put(trim(countyName), weather);
+                if (null != countyName) {
+                    weatherCache.put(trim(countyName), weather);
+                }
             }
             return weather;
         });
     }
-
+    
     @Override
     public Area getArea(String areaName, boolean simple) {
         Area area = areaCache.getIfPresent(trim(areaName));
@@ -131,7 +137,6 @@ public class WeatherServiceImpl implements WeatherService, InitializingBean {
             county.setProvince(province);
             county.setCity(city);
             areaCache.put(name, county);
-            areaCache.put(name + "code", new Area(province.getCode() + city.getCode() + code, province.getName() + city.getName() + name));
         });
     }
 }

@@ -21,7 +21,6 @@ import java.util.concurrent.TimeUnit;
  * @author Li Ming
  */
 @Slf4j
-@RefreshScope
 public class FrequencyFilter extends OncePerRequestFilter {
 
     @Value("${service.limit:100}")

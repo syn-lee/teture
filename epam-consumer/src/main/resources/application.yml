@@ -9,10 +9,14 @@ spring:
   # 配置服务注册中心地址
   cloud:
     nacos:
+      username: nacos
+      password: nacos
       discovery:
         server-addr: ${epam.config.nacosServerAddr}
+        group: epam
       config:
         server-addr: ${epam.config.nacosServerAddr}
+        group: epam
         shared-configs[0]:
           data-id: epam-provider
   # i18n

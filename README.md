@@ -17,9 +17,9 @@ springboot + nacos 做服务注册发现中心以及配置中心，guava cache �
    2. 客户端url 访问天气：localhost:18081/test/weather/省/市/县
    3. 客户端url 访问温度：localhost:18081/test/省/市/县
 6. snapshot
-<img width="385" alt="weather1" src="https://user-images.githubusercontent.com/6193594/141064469-2726c09c-56d1-4ae7-b318-34b0d4a64429.png">
-<img width="408" alt="weather2" src="https://user-images.githubusercontent.com/6193594/141064480-72479403-b460-4631-a119-8dedd0c79b64.png">
-<img width="342" alt="weather3" src="https://user-images.githubusercontent.com/6193594/141064482-e7e44f82-ebc1-4885-9a78-8a6ae1c3ea85.png">
+   <img alt="weather1" src="weather1.png" width="385"/>
+   <img alt="weather2" src="weather2.png" width="408"/>
+   <img alt="weather3" src="weather3.png" width="342"/>
 
 
 ### nacos 中核心配置项，默认 8848 端口

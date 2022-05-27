@@ -21,4 +21,8 @@ public class UrlConfig {
     private String cityUrl = "http://www.weather.com.cn/data/city3jdata/provshi/{id}.html";
     private String countyUrl = "http://www.weather.com.cn/data/city3jdata/station/{id}.html";
     private String url = "http://www.weather.com.cn/data/sk/{id}.html";
+    
+    public void setProvinceUrl(String provinceUrl) {
+        this.provinceUrl = provinceUrl;
+    }
 }

@@ -10,7 +10,6 @@ import java.io.Serializable;
  */
 @Data
 public class WeatherInfo implements Serializable {
-    private WeatherInfo weatherinfo;
     static final long serialVersionUID = 42;
 //    {"weatherinfo":{"city":"苏州","cityid":"101190401","temp":"23.9","WD":"东北风","WS":"小于3级","SD":"79%","AP":"1004.9hPa","njd":"暂无实况","WSE":"<3","time":"18:00","sm":"1.5","isRadar":"0","Radar":""}}
     private String city;

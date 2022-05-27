@@ -24,9 +24,7 @@
         <appender-ref ref="file"/>
     </root>
 
-    <logger name="com.epam" additivity="true" level="DEBUG">
-        <appender-ref ref="console"/>
-        <appender-ref ref="file" />
-    </logger>
+    <logger name="com.epam" level="DEBUG"/>
+    <logger name="com.alibaba.nacos" level="ERROR"/>
 
 </configuration>

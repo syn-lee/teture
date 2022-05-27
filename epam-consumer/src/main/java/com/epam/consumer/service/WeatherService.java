@@ -32,6 +32,8 @@ public interface WeatherService {
      * @author Li Ming
      */
     WeatherInfo checkWeather(String province, String city, String county);
-
+    
+    WeatherInfo getWeatherInfo(String code, String countyName);
+    
     Area getArea(String areaName, boolean onlyPath);
 }

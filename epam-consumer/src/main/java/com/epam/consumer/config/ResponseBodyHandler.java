@@ -26,17 +26,13 @@ public class ResponseBodyHandler implements ResponseBodyAdvice {
     @Override
     public Object beforeBodyWrite(Object o, MethodParameter methodParameter, MediaType mediaType, Class aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
         if (serverHttpResponse instanceof ServletServerHttpResponse) {
-            if (!ClassUtils.isPrimitiveOrWrapper(o.getClass()) && !(o instanceof CharSequence) || o.toString().startsWith("{")) {
-                o = JSON.parseObject(JSON.toJSONString(o, SerializerFeature.NotWriteDefaultValue));
-            }
             HttpServletResponse response = ((ServletServerHttpResponse) serverHttpResponse).getServletResponse();
-            Result obj;
-            if (ClassUtils.isPrimitiveOrWrapper(o.getClass()) || response.getStatus() >= 200 && response.getStatus() < 300) {
-                obj = Result.success(o);
+            if (response.getStatus() >= 200 && response.getStatus() < 300) {
+                o = Result.success(o);
             } else {
-                obj = Result.error(response.getStatus(), "", o);
+                o = Result.error(response.getStatus(), "", o);
             }
-            return obj;
+            o = JSON.parseObject(JSON.toJSONString(o, SerializerFeature.NotWriteDefaultValue));
         }
         return o;
     }
